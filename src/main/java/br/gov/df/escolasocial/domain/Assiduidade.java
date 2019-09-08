@@ -1,11 +1,8 @@
-package br.gov.df.escolasocial.domain.source;
+package br.gov.df.escolasocial.domain;
 
 import java.util.Date;
 
 public class Assiduidade {
-
-    private static final String NAO_JUSTIFICADO = "-----------------------------------";
-    private static final String VALOR_RECESSO_OU_FERIADO = "RECESSO OU FERIADO";
 
     private Long codigo; // cda
     private Long matricula;
@@ -116,24 +113,5 @@ public class Assiduidade {
 
     public void print() {
         System.out.println(this);
-    }
-
-    public boolean podeCalcularPresenca() {
-        return getMotivo() == null || NAO_JUSTIFICADO.equals(getMotivo());
-    }
-
-    public boolean isPresenca() {
-        return getHoraEntradaManha() != null
-                || getHoraSaidaManha() != null
-                || getHoraEntradaTarde() != null
-                || getHoraSaidaTarde() != null;
-    }
-
-    public boolean isRecessoOuFeriado() {
-        return getMotivo() != null && VALOR_RECESSO_OU_FERIADO.equalsIgnoreCase(getMotivo().trim());
-    }
-
-    public boolean isFalta() {
-        return !isRecessoOuFeriado();
     }
 }
